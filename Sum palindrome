@@ -1,0 +1,59 @@
+//{ Driver Code Starts
+// Initial Template for C++
+#include <bits/stdc++.h>
+using namespace std;
+
+// } Driver Code Ends
+// User function Template for C++
+class Solution {
+  public:
+    bool isPalindrome(long long num) {
+    string numStr = to_string(num); // Convert number to string
+    int left = 0, right = numStr.length() - 1;
+    while (left < right) {
+        if (numStr[left] != numStr[right])
+            return false;
+        left++;
+        right--;
+    }
+    return true;
+  }
+    long long isSumPalindrome(long long num){
+    int iterations = 0;
+    while (!isPalindrome(num) && iterations < 5) {
+        // Reverse the number
+        long long reversed = 0;
+        long long originalNum = num;
+        while (originalNum > 0) {
+            reversed = reversed * 10 + originalNum % 10;
+            originalNum /= 10;
+        }
+
+        // Add the reversed number to the original number
+        num += reversed;
+        iterations++;
+    }
+    if(isPalindrome(num))
+    {
+        return num;
+    }
+    else{
+        return -1;
+    }
+    }
+};
+
+//{ Driver Code Starts.
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        long long n;
+        cin >> n;
+        Solution ob;
+        cout<<ob.isSumPalindrome(n)<<endl;
+    }
+    return 0;
+}
+
+// } Driver Code Ends
