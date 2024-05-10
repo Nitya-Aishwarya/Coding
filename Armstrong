@@ -1,0 +1,46 @@
+//{ Driver Code Starts
+// Initial Template for C++
+#include <bits/stdc++.h>
+using namespace std;
+
+// } Driver Code Ends
+// User function Template for C++
+class Solution {
+  public:
+    string armstrongNumber(int n){
+        // code here
+        //num is stored in temp variable
+        int temp=n,sum=0; 
+        
+        while(n>0)
+        {
+            int t=n%10;
+            //get unit digit of the number
+            sum+=pow(t,3);
+            //calculate the sum of each digit raised to the power of 3
+            n=n/10;
+        }
+        if(temp==sum)//return yes if the sum is same as temp
+        {
+            return "Yes";
+        }else
+        {
+            return "No";
+        }
+    }
+};
+
+//{ Driver Code Starts.
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        Solution ob;
+        cout << ob.armstrongNumber(n) << endl;
+    }
+    return 0;
+}
+
+// } Driver Code Ends
